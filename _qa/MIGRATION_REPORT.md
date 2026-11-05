@@ -21,7 +21,7 @@
 `.nojekyll` は追加しない。GitHub Pages既定のJekyllは `_` 始まりのフォルダを公開しないため、`_tools/`・`_qa/` を同じリポジトリに置いたまま公開物から外せる（ゲームリポジトリと同じ方式）。Jekyll 3.10.0 の EntryFilter で再現し、公開44件・非公開6件（`_tools/`・`_qa/`・dotfile）を確認。
 
 ## 公開物
-44ファイル / 31,180,274 bytes（`payload_manifest.txt`。README.md・MIGRATION_BRIEF.md を含む）
+44ファイル / 31,181,845 bytes（NEWS-STATUS-FIX-01 時点。`_tools/payload_manifest.py` で再計測）。※初回報告の 31,180,274 bytes は README 書き換え前の計測で、`4873750` の実際の値は 31,181,550 bytes（差 1,276 B＝README の増分）
 
 ## QA（エミュレーション。Google Fonts遮断）
 - 参照切れ: 内部参照46件すべて200、壊れた参照0
