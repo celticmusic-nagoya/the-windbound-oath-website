@@ -1,0 +1,6 @@
+== delay ''
+WORST 0.00000000
+== delay 'img/hero/logo'
+WORST 0.00000000
+== delay 'img/'
+WORST 0.00000000

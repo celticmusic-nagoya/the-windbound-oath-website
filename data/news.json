@@ -1,0 +1,4 @@
+{
+  "_note": "Published news only. Add items here only after director approval, with \"status\": \"published\". Drafts live in _drafts-news/news.json (not published).",
+  "items": []
+}
