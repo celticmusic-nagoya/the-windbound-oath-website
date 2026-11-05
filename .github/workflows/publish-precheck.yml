@@ -1,0 +1,72 @@
+# PUBLISH-PRECHECK-01: build the site exactly as GitHub Pages does (actions/jekyll-build-pages)
+# and inspect the output. This workflow does NOT deploy and does NOT enable Pages.
+name: publish-precheck
+on:
+  push:
+    branches: [feature/website-separation-01]
+permissions:
+  contents: read
+jobs:
+  precheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build with Jekyll (same action GitHub Pages uses; no deploy)
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+
+      - name: Inspect build output
+        run: |
+          set -o pipefail
+          sudo chown -R "$(id -u)" _site
+          find _site -type f -printf '%s\t%P\n' | sort -k2 > precheck_files.txt
+          python3 _tools/precheck_output.py _site | tee precheck_output.txt
+
+      - name: HTML validation (latest Nu HTML Checker)
+        run: |
+          set -o pipefail
+          npm install --no-save vnu-jar
+          java -jar node_modules/vnu-jar/build/dist/vnu.jar --version | tee precheck_vnu.txt
+          java -jar node_modules/vnu-jar/build/dist/vnu.jar --format text _site/index.html 2>&1 | tee -a precheck_vnu.txt || true
+          if grep -qE '^(Error|Warning|error|warning)' precheck_vnu.txt; then echo "RESULT FAIL" | tee -a precheck_vnu.txt; exit 1; else echo "RESULT PASS (0 errors / 0 warnings)" | tee -a precheck_vnu.txt; fi
+
+      - name: URLs
+        if: always()
+        run: |
+          for u in https://celticmusic-nagoya.github.io/the-windbound-oath/ https://celticmusic-nagoya.github.io/the-windbound-oath-website/ https://github.com/celticmusic-nagoya/the-windbound-oath; do
+            printf '%s %s\n' "$(curl -s -o /dev/null -w '%{http_code}' "$u")" "$u"
+          done | tee precheck_urls.txt
+          grep -oE 'https?://[^"]+' _site/index.html | sort -u | tee -a precheck_urls.txt
+
+      - name: Browser QA with real Google Fonts
+        if: always()
+        run: |
+          npm install --no-save playwright@1
+          npx playwright install --with-deps chromium
+          (cd _site && python3 -m http.server 8080 >/dev/null 2>&1 &)
+          sleep 2
+          SITE_URL=http://localhost:8080/ node _tools/precheck_fonts.js | tee precheck_fonts.txt
+          SITE_URL=http://localhost:8080/ node _tools/qa_site.js > precheck_qa_site.txt 2>&1 || true
+          tail -1 precheck_qa_site.txt
+
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo "## PUBLISH-PRECHECK-01 @ ${GITHUB_SHA}"
+            for f in precheck_output.txt precheck_vnu.txt precheck_urls.txt precheck_fonts.txt; do
+              echo "### $f"; echo '```'; cat "$f" 2>/dev/null | tail -40; echo '```'
+            done
+            echo "### qa_site.js"; echo '```'; tail -1 precheck_qa_site.txt 2>/dev/null; grep -B1 -A1 '"FAIL"' precheck_qa_site.txt 2>/dev/null | head -20; echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: publish-precheck-${{ github.sha }}
+          path: |
+            precheck_*.txt
+          retention-days: 30
