@@ -1,8 +1,7 @@
-# payload: 44 files / 31181845 bytes (git blob sizes; excludes paths with a component starting with "_" or ".")
-2774	d00a0188794bb37d091e752f6b6e6f418e745090	MIGRATION_BRIEF.md
-1754	a999d509d9f9d8a2169cf0f7b7a53b88469608fe	README.md
+# payload: 43 files / 31179343 bytes (git blob sizes; excludes paths with a component starting with "_" or ".")
+2984	865add0eeadecf69e6eeb14308d50a5ab5c1fa22	README.md
 19256	d9e36997c35dac1e32bf6d57078a9795fa0d2be5	css/site.css
-1143	930fc2271292e7d7491189d8f042da9bc0e529cb	data/news.json
+185	075db1bcdf1e34fc94050546a704117f1a83d285	data/news.json
 283558	87123bb4315a7ecd3b6095d948994abad26e9dc0	img/chars/aidan-360.webp
 476334	c1b8b817caebaceda9b15585bae9d8ec0e8c42df	img/chars/aidan-480.webp
 788332	19fd693dd5a00365004bce61eedd15fed957f547	img/chars/aidan.webp

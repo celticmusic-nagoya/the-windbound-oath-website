@@ -42,6 +42,16 @@ print(f'MISSING expected (non-.md): {len(missing)} {missing}')
 print(f'.md sources (Jekyll may convert): {md_src}')
 print(f'EXTRA in output: {len(extra)} {extra}')
 print(f'CHANGED bytes (should be identical): {len(changed)} {changed}')
-ok = not forbidden and not missing and not changed
+# Publish-cleanup checks (PUBLISH-CLEANUP-01)
+brief_html = [p for p in built if 'MIGRATION_BRIEF' in p]
+import json as _json
+news = _json.load(open(os.path.join(out, 'data/news.json'), encoding='utf-8')) if 'data/news.json' in built else None
+news_items = news.get('items') if isinstance(news, dict) else None
+unpublished = [n for n in (news_items or []) if n.get('status') != 'published']
+theme_refs = [f for f in built if f.endswith(('.html', '.css', '.js')) and 'assets/css/style.css' in open(os.path.join(out, f), encoding='utf-8', errors='ignore').read()]
+print(f'MIGRATION_BRIEF in output: {len(brief_html)} {brief_html}')
+print(f'data/news.json items={None if news_items is None else len(news_items)} non-published={len(unpublished)}')
+print(f'theme CSS assets/css/style.css present={"assets/css/style.css" in built} referenced_by={theme_refs}')
+ok = not forbidden and not missing and not changed and not brief_html and news_items is not None and not unpublished and not theme_refs
 print('RESULT', 'PASS' if ok else 'FAIL')
 sys.exit(0 if ok else 1)

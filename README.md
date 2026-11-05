@@ -16,11 +16,22 @@ GitHub Pages publication is **not yet authorized**.
 | `data/news.json` | yes | News list — edit this file only |
 | `img/` | yes | Approved web derivatives only (lossless WebP / PNG / 1×1 placeholder) |
 | `_tools/` | no (Jekyll skips `_` folders) | QA scripts and image provenance (`provenance/IMAGE_REPORT.json`) |
-| `_qa/` | no | Migration evidence |
+| `_qa/` | no | Migration evidence, migration brief (`_qa/MIGRATION_BRIEF.md`) |
+| `_drafts-news/` | no | Draft news (`news.json`) awaiting director approval |
 
 ## Update news
-Add an item to `data/news.json`: `{ "date": "YYYY-MM-DD", "category": "DEVELOPMENT|ART|FIX", "title": "…", "status": "draft" }`.
-Only items with `"status": "published"` are shown on the site. Change `draft` to `published` after director approval.
+- Public file: `data/news.json` — contains **only director-approved items**. It is `{"items": []}` until something is approved.
+- Drafts: `_drafts-news/news.json` (not published). Write new items here first with `"status": "draft"`.
+- To publish an approved item: copy it from `_drafts-news/news.json` into `data/news.json` and set `"status": "published"`.
+  Item format: `{ "date": "YYYY-MM-DD", "category": "DEVELOPMENT|ART|FIX", "title": "…", "status": "published" }`.
+- `js/site.js` additionally shows only `status: "published"` items, but drafts must never be placed in `data/news.json`: everything in that file is downloadable once published.
+
+## Publishing method (important)
+GitHub Pages builds this repository with its default Jekyll build. Jekyll does not publish files or folders whose names start with `_` or `.`,
+which is why `_qa/`, `_tools/` and `_drafts-news/` stay private on the site (they are still visible in the GitHub repository itself).
+**Do not switch to a non-Jekyll deployment** (adding `.nojekyll`, a custom Actions deploy of the whole tree, another static host) without first moving
+`_qa/`, `_tools/` and `_drafts-news/` out of the deployed files — otherwise they would be published.
+`.github/workflows/publish-precheck.yml` runs the same Jekyll build on pushes to the work branch and checks the output; it never deploys.
 
 ## Images
 Web images are derived from the game repository's approved originals by `_tools/build_images.py`
