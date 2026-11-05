@@ -1,44 +1,45 @@
-2774 ./MIGRATION_BRIEF.md
-341 ./README.md
-19256 ./css/site.css
-1143 ./data/news.json
-283558 ./img/chars/aidan-360.webp
-476334 ./img/chars/aidan-480.webp
-788332 ./img/chars/aidan.webp
-245080 ./img/chars/emma-360.webp
-416386 ./img/chars/emma-480.webp
-710504 ./img/chars/emma.webp
-347980 ./img/chars/fiona-360.webp
-585144 ./img/chars/fiona-480.webp
-982358 ./img/chars/fiona.webp
-223580 ./img/chars/lou-360.webp
-377676 ./img/chars/lou-480.webp
-780132 ./img/chars/lou.webp
-2294 ./img/favicon-64.png
-1791286 ./img/gallery/aidan-battle-full.webp
-114140 ./img/gallery/aidan-battle-thumb-360.webp
-318642 ./img/gallery/aidan-battle-thumb.webp
-184576 ./img/gallery/bg-01-thumb-360.webp
-552036 ./img/gallery/bg-01-thumb.webp
-2531588 ./img/gallery/cg01-full.webp
-158554 ./img/gallery/cg01-thumb-360.webp
-466176 ./img/gallery/cg01-thumb.webp
-2551022 ./img/gallery/cg03-full.webp
-153208 ./img/gallery/cg03-thumb-360.webp
-447724 ./img/gallery/cg03-thumb.webp
-1952710 ./img/gallery/fiona-battle-full.webp
-136560 ./img/gallery/fiona-battle-thumb-360.webp
-380894 ./img/gallery/fiona-battle-thumb.webp
-149398 ./img/gallery/key-visual-thumb-360.webp
-444796 ./img/gallery/key-visual-thumb.webp
-2282072 ./img/gallery/lou-battle-full.webp
-229410 ./img/gallery/lou-battle-thumb-360.webp
-645860 ./img/gallery/lou-battle-thumb.webp
-830814 ./img/hero/aidan-back.webp
-2496562 ./img/hero/bg-landscape.webp
-2678126 ./img/hero/bg-portrait.webp
-736402 ./img/hero/logo.webp
-42 ./img/placeholder.gif
-2680184 ./img/story/bg-01.webp
-19707 ./index.html
-4913 ./js/site.js
+# payload: 44 files / 31181845 bytes (git blob sizes; excludes paths with a component starting with "_" or ".")
+2774	d00a0188794bb37d091e752f6b6e6f418e745090	MIGRATION_BRIEF.md
+1754	a999d509d9f9d8a2169cf0f7b7a53b88469608fe	README.md
+19256	d9e36997c35dac1e32bf6d57078a9795fa0d2be5	css/site.css
+1143	930fc2271292e7d7491189d8f042da9bc0e529cb	data/news.json
+283558	87123bb4315a7ecd3b6095d948994abad26e9dc0	img/chars/aidan-360.webp
+476334	c1b8b817caebaceda9b15585bae9d8ec0e8c42df	img/chars/aidan-480.webp
+788332	19fd693dd5a00365004bce61eedd15fed957f547	img/chars/aidan.webp
+245080	5e7dac251d04e2073d9354ab65442b482cca7f34	img/chars/emma-360.webp
+416386	cf2b78d07250549c3ba2c14db71bbb79f1faeb18	img/chars/emma-480.webp
+710504	49cc1b33a471fa5155d69a83b7a00e0120bfe72e	img/chars/emma.webp
+347980	b538f129b93e8f3271ff29e8b24a66d8816e3d0d	img/chars/fiona-360.webp
+585144	31e8f702491728ebd0137dedf5cbf7e1146eaf09	img/chars/fiona-480.webp
+982358	51a9ce1069e1a83e22003c6e17ef7f347a1b8a5c	img/chars/fiona.webp
+223580	16f8dc62362b4083a806e536f4735304bc5184fa	img/chars/lou-360.webp
+377676	558a9cf249392ffa816657e45728c7ae01717edf	img/chars/lou-480.webp
+780132	9d97d33ffb5310826b043a3210f3bc83b51e117f	img/chars/lou.webp
+2294	378febc56905b84b95b9e3b8dd7aa1ee2127572d	img/favicon-64.png
+1791286	0e66093fde0e89caa1afb5aa8b2c325fcaa328f0	img/gallery/aidan-battle-full.webp
+114140	2efe214d7e429e6e83dfcef736db788f2cdd7d0d	img/gallery/aidan-battle-thumb-360.webp
+318642	ce6d1d8390eb7e04b0c8db3649932b32048e294e	img/gallery/aidan-battle-thumb.webp
+184576	f4ff9f1c9cd152abdbddb7dc96e411274c6bd96b	img/gallery/bg-01-thumb-360.webp
+552036	3d1a4eac6fc094cc243f4b3cdff54bb2e9102b18	img/gallery/bg-01-thumb.webp
+2531588	8bcdaa836e97cdbe48f91f33577d51c653435e1c	img/gallery/cg01-full.webp
+158554	de9087f9482e9e355bcc7a5c5e4766acb266b1ac	img/gallery/cg01-thumb-360.webp
+466176	1fb49dd60cb56713c6afbeb8565ef13eef0f2680	img/gallery/cg01-thumb.webp
+2551022	d17dc9d358fcf2a74cd6ee5a822d0e369a8d9955	img/gallery/cg03-full.webp
+153208	a04b82c460dfbe372ddd93f52805ddf469221715	img/gallery/cg03-thumb-360.webp
+447724	3db191ecf0b55f85f0caaec5aa71e3f3ed1abbfc	img/gallery/cg03-thumb.webp
+1952710	67186a9d12648b9b82249439904f586590fe4d9b	img/gallery/fiona-battle-full.webp
+136560	b44d26dc630ddb96b97aeec5fe6731fe9af5c1a8	img/gallery/fiona-battle-thumb-360.webp
+380894	5f8b8148ed6e33bde31dd77b2b7e45174f856428	img/gallery/fiona-battle-thumb.webp
+149398	4a9b5cd92b7a706075a344930909e358ba3a67fb	img/gallery/key-visual-thumb-360.webp
+444796	0ce498585e086da1b8c9217380a4392bb0999ef6	img/gallery/key-visual-thumb.webp
+2282072	70fd0feaba066eba35d8a10a216cb511f7436a78	img/gallery/lou-battle-full.webp
+229410	cd003e01b9fcc061eed9b437758659b274602a59	img/gallery/lou-battle-thumb-360.webp
+645860	e9d748d36348b89eaccc80c2bb3f3a4aae904060	img/gallery/lou-battle-thumb.webp
+830814	cadb6b984e9d76b753e173fc4efba77d87c9a98b	img/hero/aidan-back.webp
+2496562	c61a5f8cada29e96a72c4104573064e83814104b	img/hero/bg-landscape.webp
+2678126	803db737e97f13a4aa30a148fd39275da7aec36f	img/hero/bg-portrait.webp
+736402	58579e01f60eb6b3a6d71ac0f18f0970a169b684	img/hero/logo.webp
+42	f191b280ce91e6cb8c387735c10ef9bc5da6c83b	img/placeholder.gif
+2680184	4012e48f3b331dfc773fad3f0a5e5ace46b8a954	img/story/bg-01.webp
+19707	8d287b7b245610b38225c15f2b44e008d437f9dd	index.html
+5071	6c3dda9cc99fdb7706223a700867d0dcee832dc3	js/site.js

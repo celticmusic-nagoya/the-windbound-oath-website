@@ -242,6 +242,25 @@ const scrollAll = (p) => p.evaluate(async () => {
     rec('画像sizesと実表示幅・DPR別の候補選択', fails.length === 0, fails.join(' | ') || rows.filter((x, i) => i % 6 === 0).join(' / ') + ` …（${rows.length}条件、乖離6%以内・候補不足0）`);
   }
 
+  // News publish control: only status === "published" is rendered
+  {
+    const { ctx, p } = await page(b, { viewport: { width: 1440, height: 900 } });
+    const real = await p.evaluate(() => [...document.querySelectorAll('.news-list > li')].map((li) => li.textContent.trim()));
+    await ctx.close();
+    const c2 = await b.newContext({ viewport: { width: 1440, height: 900 } });
+    const p2 = await c2.newPage();
+    await p2.route(/fonts\.(googleapis|gstatic)\.com/, (r) => r.abort());
+    await p2.route(/data\/news\.json$/, (r) => r.fulfill({ contentType: 'application/json', body: JSON.stringify({ items: [
+      { date: '2026-01-02', category: 'ART', title: 'PUBLISHED-ITEM', status: 'published' },
+      { date: '2026-01-03', category: 'FIX', title: 'DRAFT-ITEM', status: 'draft' },
+      { date: '2026-01-04', category: 'FIX', title: 'NO-STATUS-ITEM' } ] }) }));
+    await p2.goto(BASE); await p2.waitForTimeout(800);
+    const mock = await p2.evaluate(() => [...document.querySelectorAll('.news-item__title')].map((e) => e.textContent));
+    await c2.close();
+    const ok = real.length === 1 && /現在お知らせはありません/.test(real[0]) && mock.length === 1 && mock[0] === 'PUBLISHED-ITEM';
+    rec('ニュース公開制御(status=published のみ表示)', ok, `実データ表示=${JSON.stringify(real)} / テストデータ表示=${JSON.stringify(mock)}`);
+  }
+
   await b.close();
   console.log(JSON.stringify(results, null, 1));
   const fail = results.filter((r) => r.result === 'FAIL').length;

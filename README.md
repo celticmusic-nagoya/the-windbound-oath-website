@@ -19,7 +19,8 @@ GitHub Pages publication is **not yet authorized**.
 | `_qa/` | no | Migration evidence |
 
 ## Update news
-Add an item to `data/news.json`: `{ "date": "YYYY-MM-DD", "category": "DEVELOPMENT|ART|FIX", "title": "…" }`.
+Add an item to `data/news.json`: `{ "date": "YYYY-MM-DD", "category": "DEVELOPMENT|ART|FIX", "title": "…", "status": "draft" }`.
+Only items with `"status": "published"` are shown on the site. Change `draft` to `published` after director approval.
 
 ## Images
 Web images are derived from the game repository's approved originals by `_tools/build_images.py`

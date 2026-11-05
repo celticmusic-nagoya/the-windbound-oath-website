@@ -208,7 +208,12 @@
   "name": "画像sizesと実表示幅・DPR別の候補選択",
   "result": "PASS",
   "detail": "gallery 1440@1x 実幅264 申告264 選択360w / gallery 1280@1x 実幅264 申告264 選択360w / gallery 1190@1x 実幅262 申告262 選択360w / gallery 1024@1x 実幅303 申告303 選択360w / gallery 900@1x 実幅265 申告265 選択360w / gallery 844@1x 実幅380 申告380 選択640w / gallery 768@1x 実幅349 申告360 選択360w / gallery 390@1x 実幅171 申告171 選択360w / gallery 360@1x 実幅156 申告156 選択360w …（54条件、乖離6%以内・候補不足0）"
+ },
+ {
+  "name": "ニュース公開制御(status=published のみ表示)",
+  "result": "PASS",
+  "detail": "実データ表示=[\"現在お知らせはありません。\"] / テストデータ表示=[\"PUBLISHED-ITEM\"]"
  }
 ]
 
-42 PASS / 0 FAIL
+43 PASS / 0 FAIL

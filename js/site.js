@@ -72,7 +72,8 @@
   };
   fetch(list.dataset.newsSrc)
     .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then((d) => renderNews(d.items || []))
+    // Only director-approved items are shown. Anything else (e.g. "draft") stays in the file but is not published.
+    .then((d) => renderNews((d.items || []).filter((n) => n.status === 'published')))
     .catch(() => {
       list.replaceChildren();
       const li = document.createElement('li');
