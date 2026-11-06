@@ -46,4 +46,4 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add assets/companions/bram.webp assets/companions/liam.webp
-          git diff --cached --quiet || (git commit -m "assets(site): add approved Bram and Liam WebP" && git push)
+          git diff --cached --quiet || (git commit -m "assets(site): add approved Bram and Liam WebP" && git pull --rebase origin feature/companions-art-02-approved && git push origin HEAD:feature/companions-art-02-approved)
