@@ -296,3 +296,14 @@ h1, h2, h3, p { margin: 0; }
 .world-card h3 { font-family: var(--f-ja-head); font-size: clamp(1.25rem, 2vw, 1.6rem); margin-bottom: 1rem; color: var(--c-text); }
 .world-card > p:last-child { color: var(--c-text-sub); line-height: 1.95; overflow-wrap: anywhere; }
 @media (max-width: 700px) { .world-grid { grid-template-columns: minmax(0,1fr); } }
+
+/* WORLD-ART-01: image-ready featured composition; do not reference an unuploaded asset. */
+.world-feature { display: grid; gap: clamp(1rem, 2.4vw, 2rem); }
+.world-feature__village { min-width: 0; overflow: hidden; border: 1px solid var(--c-accent); border-radius: var(--radius); }
+.world-feature__visual { position: relative; min-height: clamp(330px, 38vw, 520px); display: flex; align-items: stretch; background: radial-gradient(ellipse at 78% 28%, rgba(133,163,109,.4), transparent 55%), linear-gradient(115deg, #10251e, #294b3b 64%, #172e28); }
+.world-feature__copy { position: relative; z-index: 1; width: min(100%, 480px); padding: clamp(1.5rem, 4vw, 3.5rem); display: flex; flex-direction: column; justify-content: center; gap: 1rem; background: linear-gradient(90deg, rgba(8,21,17,.97), rgba(8,21,17,.83) 75%, transparent); }
+.world-feature__copy h3 { font-family: var(--f-ja-head); font-size: clamp(2rem, 4vw, 3rem); color: var(--c-gold-light); }
+.world-feature__copy p:not(.world-card__number) { line-height: 1.9; color: var(--c-text); }
+.world-grid--secondary { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 900px) { .world-grid--secondary { grid-template-columns: minmax(0,1fr); } }
+@media (max-width: 600px) { .world-feature__visual { min-height: 370px; } .world-feature__copy { width: 100%; background: linear-gradient(0deg, rgba(8,21,17,.95), rgba(8,21,17,.62)); justify-content: flex-end; } }
