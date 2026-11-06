@@ -1,0 +1,42 @@
+name: Sync director-confirmed Bram artwork (one-time)
+on:
+  push:
+    branches: [feature/bram-director-confirmed-site-20261106]
+    paths: [.github/workflows/sync-bram-confirmed-once.yml]
+permissions:
+  contents: write
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download verified master and update website-local WebP
+        shell: bash
+        run: |
+          python -m pip install --quiet Pillow
+          python - <<'PY'
+          import hashlib,io,pathlib,urllib.request
+          from PIL import Image
+          sha='2982a87883ee8fdc0ac6738e358e01af4b2ca0b0'
+          url=f'https://raw.githubusercontent.com/celticmusic-nagoya/the-windbound-oath/{sha}/assets/companions/bram/master/bram-full-body.png'
+          with urllib.request.urlopen(url,timeout=60) as r: raw=r.read()
+          actual=hashlib.sha256(raw).hexdigest()
+          assert actual=='403f9e01a05d6b5ae4dbca1b7614b3d17b2797f6054ab8a2797f67c43cf5e191',actual
+          im=Image.open(io.BytesIO(raw)).convert('RGBA')
+          assert im.getchannel('A').getextrema()==(0,255)
+          path=pathlib.Path('assets/companions/bram.webp')
+          path.parent.mkdir(parents=True,exist_ok=True)
+          im.save(path,'WEBP',quality=94,method=6)
+          assert Image.open(path).convert('RGBA').getchannel('A').getextrema()==(0,255)
+          print('SOURCE_SHA256:',actual)
+          print('SOURCE_SIZE:',im.size)
+          print('WEBP_SHA256:',hashlib.sha256(path.read_bytes()).hexdigest())
+          print('WEBP_BYTES:',path.stat().st_size)
+          PY
+      - name: Commit updated site-local artwork
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/companions/bram.webp
+          git diff --cached --quiet || (git commit -m "assets(site): use director-confirmed Bram transparent art" && git pull --rebase origin feature/bram-director-confirmed-site-20261106 && git push origin HEAD:feature/bram-director-confirmed-site-20261106)
