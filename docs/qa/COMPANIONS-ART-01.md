@@ -21,3 +21,11 @@ Draft PR #7, Morwen v3.0 and Serena approved WebP artwork in COMPANIONS cards.
 
 ## Gate
 **NOT READY FOR MERGE** until the above blockers are resolved. Do not change main or publish.
+
+## Follow-up: website-local assets (2026-11-06)
+- PASS: Two WebP files were copied byte-identically to `assets/companions/` in the website repository using Git blobs.
+- PASS: Git blob SHA source == destination: Morwen `391665bbfdf384a4b7df956487c0c5464038152d`; Serena `065f0f0d87d2726ea356b187c31075a52ad5bafb`. This confirms byte-for-byte identity (Git blob SHA-1), not a separate SHA-256 computation.
+- PASS: Both HTML `src` values use relative website-local paths; no raw.githubusercontent.com dependency remains for companion art.
+- PASS: Two approved portraits only; Liam/Bram remain text-only.
+- PENDING USER QA: browser image rendering, desktop/390px/Android layout, overflow, CLS, image proportions.
+- RELEASE DECISION: Director has authorized ChatGPT to merge and perform direct post-merge QA; user will conduct visual QA on the published site. No claim of visual PASS is made.
