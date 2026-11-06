@@ -1,0 +1,53 @@
+name: Refine Bram alpha fringe (one-time)
+on:
+  push:
+    branches: [feature/companions-art-02-fix-02]
+    paths: [.github/workflows/refine-bram-fringe-once.yml]
+permissions:
+  contents: write
+jobs:
+  refine:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Decontaminate narrow white fringe at transparency boundary
+        shell: bash
+        run: |
+          python -m pip install --quiet Pillow numpy scipy
+          python - <<'PY'
+          import hashlib
+          import numpy as np
+          from PIL import Image
+          from scipy.ndimage import distance_transform_edt, binary_erosion
+          p='assets/companions/bram.webp'
+          a=np.array(Image.open(p).convert('RGBA'),dtype=np.uint8)
+          alpha=a[:,:,3]
+          opaque=alpha>0
+          # Restrict correction to the narrow 2-pixel interior silhouette boundary.
+          eroded=binary_erosion(opaque, iterations=2, border_value=0)
+          edge=opaque & ~eroded
+          rgb=a[:,:,:3].astype(np.float32)
+          # Only remove visibly light, neutral fringe pixels, preserving colored edge details.
+          bright=(np.min(rgb,axis=2)>194) & ((np.max(rgb,axis=2)-np.min(rgb,axis=2))<42)
+          fringe=edge & bright
+          # Replace bright fringe RGB using the nearest interior non-bright pixel.
+          interior=eroded & ~bright
+          if not interior.any(): raise RuntimeError('No suitable interior pixels')
+          _,inds=distance_transform_edt(~interior,return_indices=True)
+          a[:,:,:3][fringe]=a[:,:,:3][inds[0][fringe],inds[1][fringe]]
+          # Slightly soften the alpha boundary only where a bright fringe was found.
+          a[:,:,3][fringe]=np.minimum(alpha[fringe],185)
+          Image.fromarray(a,'RGBA').save(p,'WEBP',quality=94,method=6)
+          b=np.asarray(Image.open(p).convert('RGBA'))
+          assert (b[:,:,3]==0).sum()>10000
+          print('fringe pixels corrected:',int(fringe.sum()))
+          print('transparent pixels:',int((b[:,:,3]==0).sum()))
+          print('output SHA256:',hashlib.sha256(open(p,'rb').read()).hexdigest())
+          PY
+      - name: Commit and push
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/companions/bram.webp
+          git diff --cached --quiet || (git commit -m "fix(art): refine Bram alpha fringe" && git pull --rebase origin feature/companions-art-02-fix-02 && git push origin HEAD:feature/companions-art-02-fix-02)
