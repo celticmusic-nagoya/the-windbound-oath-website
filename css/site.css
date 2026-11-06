@@ -284,5 +284,5 @@ h1, h2, h3, p { margin: 0; }
 .companion-card__figure img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
 
 /* COMPANIONS-ART-02-FIX-01: Liam's source image has extra transparent margins. */
-.companion-card--liam .companion-card__figure img { transform: scale(1.22); transform-origin: center 75%; }
-@media (max-width: 768px) { .companion-card--liam .companion-card__figure img { transform: scale(1.15); } }
+.companion-card--liam .companion-card__figure img { transform: scale(1.10); transform-origin: center bottom; }
+@media (max-width: 768px) { .companion-card--liam .companion-card__figure img { transform: scale(1.06); } }
