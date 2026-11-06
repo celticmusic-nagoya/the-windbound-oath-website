@@ -125,6 +125,9 @@ h1, h2, h3, p { margin: 0; }
 .story__theme { font-family: var(--f-ja-head); font-size: clamp(1.35rem, 1rem + 1.4vw, 2.1rem); line-height: 1.9; letter-spacing: .14em; color: var(--c-gold-light); text-shadow: 0 2px 12px rgba(0,0,0,.8); }
 .story__subcopy { max-width: 36em; font-family: var(--f-ja-head); font-size: clamp(.95rem, .86rem + .3vw, 1.1rem); line-height: 1.9; letter-spacing: .06em; color: var(--c-text); text-shadow: 0 2px 10px rgba(0,0,0,.8); overflow-wrap: anywhere; }
 .story__intro { max-width: 720px; }
+.story__intro { display: flex; flex-direction: column; gap: var(--s-3); margin-inline: auto; color: var(--c-text); line-height: 2; letter-spacing: .035em; text-shadow: 0 2px 10px rgba(0,0,0,.8); overflow-wrap: anywhere; }
+.story__intro p { margin: 0; }
+.story__intro-turn { color: var(--c-gold-light); font-family: var(--f-ja-head); }
 
 /* ---------- 04 SYSTEM ---------- */
 .system-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-3); }
