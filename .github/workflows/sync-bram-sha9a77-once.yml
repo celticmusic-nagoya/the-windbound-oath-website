@@ -1,0 +1,41 @@
+name: Sync final SHA-verified Bram art (one-time)
+on:
+  push:
+    branches: [feature/bram-correct-sha9a77-site]
+    paths: [.github/workflows/sync-bram-sha9a77-once.yml]
+permissions:
+  contents: write
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download canonical source and generate site-local WebP
+        shell: bash
+        run: |
+          python -m pip install --quiet Pillow
+          python - <<'PY'
+          import hashlib,io,pathlib,urllib.request
+          from PIL import Image
+          commit='8b127f470aa4db0987aabb6e0973c7edafe8166c'
+          url=f'https://raw.githubusercontent.com/celticmusic-nagoya/the-windbound-oath/{commit}/assets/companions/bram/master/bram-full-body.png'
+          with urllib.request.urlopen(url,timeout=90) as r: raw=r.read()
+          sha=hashlib.sha256(raw).hexdigest()
+          assert sha=='9a77b5644a016237463d4dd308aaf957b9fda88a51dfc20e14508dc7ac7669da',sha
+          im=Image.open(io.BytesIO(raw))
+          assert im.mode=='RGBA' and im.size==(1024,1535)
+          assert im.getchannel('A').getextrema()==(0,255)
+          out=pathlib.Path('assets/companions/bram.webp')
+          im.save(out,'WEBP',quality=94,method=6)
+          assert Image.open(out).convert('RGBA').getchannel('A').getextrema()==(0,255)
+          print('CORRECT_SOURCE_SHA256:',sha)
+          print('WEBP_SHA256:',hashlib.sha256(out.read_bytes()).hexdigest())
+          print('WEBP_BYTES:',out.stat().st_size)
+          PY
+      - name: Commit site-local WebP
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/companions/bram.webp
+          git diff --cached --quiet || (git commit -m "assets(site): use verified final Bram transparent portrait" && git pull --rebase origin feature/bram-correct-sha9a77-site && git push origin HEAD:feature/bram-correct-sha9a77-site)
