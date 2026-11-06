@@ -286,3 +286,13 @@ h1, h2, h3, p { margin: 0; }
 /* COMPANIONS-ART-02-FIX-01: Liam's source image has extra transparent margins. */
 .companion-card--liam .companion-card__figure img { transform: scale(1.10); transform-origin: center bottom; }
 @media (max-width: 768px) { .companion-card--liam .companion-card__figure img { transform: scale(1.06); } }
+
+/* ---------- WORLD ---------- */
+.world { background: radial-gradient(ellipse at 50% 0%, rgba(196,166,106,.10), transparent 60%), var(--c-bg); }
+.world__theme { text-align: center; color: var(--c-gold-light); font-family: var(--f-ja-head); font-size: clamp(1.35rem, 2.6vw, 2rem); letter-spacing: .08em; }
+.world-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: clamp(1rem, 2.4vw, 2rem); }
+.world-card { min-width: 0; padding: clamp(1.5rem, 3vw, 2.5rem); background: linear-gradient(145deg, rgba(37,56,46,.92), rgba(16,26,23,.94)); border: 1px solid var(--c-line); border-top: 2px solid var(--c-accent); box-shadow: var(--shadow); }
+.world-card__number { font-family: var(--f-en); color: var(--c-accent); font-size: .75rem; letter-spacing: .16em; margin-bottom: .8rem; }
+.world-card h3 { font-family: var(--f-ja-head); font-size: clamp(1.25rem, 2vw, 1.6rem); margin-bottom: 1rem; color: var(--c-text); }
+.world-card > p:last-child { color: var(--c-text-sub); line-height: 1.95; overflow-wrap: anywhere; }
+@media (max-width: 700px) { .world-grid { grid-template-columns: minmax(0,1fr); } }
