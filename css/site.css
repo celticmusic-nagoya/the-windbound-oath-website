@@ -278,3 +278,7 @@ h1, h2, h3, p { margin: 0; }
 .companion-card { min-width: 0; padding: clamp(1.2rem, 3vw, 2rem); border: 1px solid var(--c-line); border-radius: var(--radius); background: rgba(16,26,23,.65); }
 .companion-card .char-card__en { color: var(--c-accent); }
 @media (max-width: 768px) { .companion-grid { grid-template-columns: 1fr; gap: var(--s-3); } .companion-card { padding: var(--s-3); } .profile__description { font-size: .9rem; } }
+
+/* COMPANIONS-ART-01: approved full-body artwork, staged for review. */
+.companion-card__figure { display: flex; align-items: flex-end; justify-content: center; width: 100%; aspect-ratio: 2 / 3; margin: var(--s-2) 0 var(--s-3); overflow: hidden; border-radius: var(--radius); background: radial-gradient(ellipse at 50% 70%, rgba(196,166,106,.16), transparent 68%); }
+.companion-card__figure img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
