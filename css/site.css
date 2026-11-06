@@ -307,3 +307,20 @@ h1, h2, h3, p { margin: 0; }
 .world-grid--secondary { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 @media (max-width: 900px) { .world-grid--secondary { grid-template-columns: minmax(0,1fr); } }
 @media (max-width: 600px) { .world-feature__visual { min-height: 370px; } .world-feature__copy { width: 100%; background: linear-gradient(0deg, rgba(8,21,17,.95), rgba(8,21,17,.62)); justify-content: flex-end; } }
+
+/* WORLD approved-CG gallery — staged until image uploads complete */
+.world-scene { position: relative; margin: 0; overflow: hidden; border: 1px solid var(--c-line); background: var(--c-card); }
+.world-scene > img { display: block; width: 100%; height: auto; aspect-ratio: 1672 / 941; object-fit: cover; }
+.world-scene__caption { position: absolute; inset: auto 0 0; padding: clamp(1rem, 3vw, 2rem); background: linear-gradient(0deg, rgba(7,16,13,.96), rgba(7,16,13,.76) 65%, transparent); color: var(--c-text); }
+.world-scene__caption h3 { margin: .35rem 0; font-family: var(--f-ja-head); font-size: clamp(1.4rem, 2.5vw, 2rem); }
+.world-scene__caption p { max-width: 54ch; line-height: 1.8; }
+.world-card--illustrated { padding: 0; overflow: hidden; }
+.world-card--illustrated > img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.world-card__body { padding: clamp(1rem, 2vw, 1.5rem); }
+.world-card__supplement { margin: 0 clamp(1rem, 2vw, 1.5rem) clamp(1rem, 2vw, 1.5rem); }
+.world-card__supplement img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border: 1px solid var(--c-line); }
+.world-card__supplement figcaption { padding-top: .55rem; font-family: var(--f-en); color: var(--c-gold-light); font-size: .75rem; letter-spacing: .08em; }
+@media (max-width: 600px) {
+  .world-scene__caption { position: static; background: var(--c-card); }
+  .world-scene__caption p { font-size: .9rem; }
+}

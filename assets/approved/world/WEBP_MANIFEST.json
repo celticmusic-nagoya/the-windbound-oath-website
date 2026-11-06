@@ -1,0 +1,30 @@
+{
+  "source": "corrected approved archive",
+  "files": [
+    {
+      "path": "assets/approved/world/rilde_village.webp",
+      "sha256": "b10d01780165870b6570a047dbe2a7b9dd248417ad11acfc1f8306afba437df2",
+      "bytes": 456870
+    },
+    {
+      "path": "assets/approved/world/moss_forest.webp",
+      "sha256": "28adc2e3fdc662a7613c3e6cee48624193d3bccc95376d56fdbaf600be035ea7",
+      "bytes": 613058
+    },
+    {
+      "path": "assets/approved/world/caerdin_overview.webp",
+      "sha256": "48bbf507da3180c6fa82040cce014af4d8192b45c0295465c6298f906f4617bb",
+      "bytes": 525712
+    },
+    {
+      "path": "assets/approved/world/caerdin_market_refined.webp",
+      "sha256": "03d74794476e5c729259d5f73fba389be2a5756382872aa9aca19fbcce5ed885",
+      "bytes": 592084
+    },
+    {
+      "path": "assets/approved/world/royal_magic_research_institute.webp",
+      "sha256": "b74847e7bd21b2aa0e4a324edb69df18b6fcaa8697fccd82c4a5dabd501a1bf1",
+      "bytes": 555670
+    }
+  ]
+}
