@@ -1,11 +1,11 @@
 # THE WINDBOUND OATH — Official Website
 
 Independent official website repository (static HTML / CSS / vanilla JS, no build step).
-GitHub Pages publication is **not yet authorized**.
+GitHub Pages is published. Routine website-only improvements are pre-approved for ChatGPT implementation, self-QA, and merge; the director performs visual/device QA. Major redesigns, canon changes, spoilers, and destructive changes require explicit consultation. Codex/Claude review is not part of the website workflow.
 
 - Source: `celticmusic-nagoya/the-windbound-oath` Draft PR #137, SHA `62c6a07290cc8e6766800ddf80a84c0a4ad9eeda`, directory `site/` (moved to this repository root)
 - Game (unchanged, separate repository): https://celticmusic-nagoya.github.io/the-windbound-oath/
-- Proposed site URL (not live): https://celticmusic-nagoya.github.io/the-windbound-oath-website/
+- Official site URL: https://celticmusic-nagoya.github.io/the-windbound-oath-website/
 
 ## Folders
 | Path | Published | Role |
