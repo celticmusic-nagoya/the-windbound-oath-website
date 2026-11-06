@@ -1,0 +1,43 @@
+name: Stage approved Bram alpha0 for website (one-time)
+on:
+  push:
+    branches: [feature/bram-approved-alpha0-site]
+    paths: [.github/workflows/stage-bram-alpha0-once.yml]
+permissions:
+  contents: write
+jobs:
+  stage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify official PNG and generate self-hosted WebP
+        shell: bash
+        run: |
+          python -m pip install --quiet Pillow
+          python - <<'PY'
+          import hashlib,io,pathlib,urllib.request
+          from PIL import Image
+          commit='9be04bdf1b8b89c4ee3bc9a84ac0968bd89cd4ed'
+          url=f'https://raw.githubusercontent.com/celticmusic-nagoya/the-windbound-oath/{commit}/assets/companions/bram/master/bram-full-body.png'
+          with urllib.request.urlopen(url,timeout=60) as response: raw=response.read()
+          digest=hashlib.sha256(raw).hexdigest()
+          assert digest=='d22fa6d79f10ed01fefb7b8b4bd6cd362f4e7a42dfa80f3d12e6c1d34ec0e9bf',digest
+          im=Image.open(io.BytesIO(raw)).convert('RGBA')
+          assert im.size==(1024,1536)
+          assert im.getchannel('A').getextrema()==(0,255)
+          p=pathlib.Path('assets/companions/bram.webp')
+          p.parent.mkdir(parents=True,exist_ok=True)
+          im.save(p,'WEBP',quality=92,method=6)
+          test=Image.open(p).convert('RGBA')
+          assert test.getchannel('A').getextrema()==(0,255)
+          print('approved source SHA256:',digest)
+          print('website WebP SHA256:',hashlib.sha256(p.read_bytes()).hexdigest())
+          print('website WebP bytes:',p.stat().st_size)
+          PY
+      - name: Commit and push site-local artwork
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/companions/bram.webp
+          git diff --cached --quiet || (git commit -m "assets(site): replace Bram with director-approved alpha0 portrait" && git pull --rebase origin feature/bram-approved-alpha0-site && git push origin HEAD:feature/bram-approved-alpha0-site)
