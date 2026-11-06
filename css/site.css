@@ -265,3 +265,15 @@ h1, h2, h3, p { margin: 0; }
   .site-nav__list a { padding: 10px 0; }
   .site-nav__play { margin-top: var(--s-1); }
 }
+
+/* Approved editorial profiles — responsive, text-first until companion art is approved. */
+.profile-section__catch { font-family: var(--f-ja-serif, serif); color: var(--c-gold-light); font-size: clamp(1.05rem, 2vw, 1.4rem); line-height: 1.9; text-align: center; }
+.profile-section__lead { color: var(--c-text-sub); text-align: center; line-height: 1.9; }
+.profile-section__notice { color: var(--c-text-sub); text-align: center; font-size: .88rem; line-height: 1.8; }
+.profile__catch { color: var(--c-gold-light); font-weight: 700; line-height: 1.85; margin: .6rem 0; }
+.profile__description { color: var(--c-text); line-height: 1.95; font-size: .92rem; }
+.profile__description p + p { margin-top: .8rem; }
+.companion-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-4); width: 100%; }
+.companion-card { min-width: 0; padding: clamp(1.2rem, 3vw, 2rem); border: 1px solid var(--c-line); border-radius: var(--radius); background: rgba(16,26,23,.65); }
+.companion-card .char-card__en { color: var(--c-accent); }
+@media (max-width: 768px) { .companion-grid { grid-template-columns: 1fr; gap: var(--s-3); } .companion-card { padding: var(--s-3); } .profile__description { font-size: .9rem; } }
