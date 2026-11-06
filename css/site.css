@@ -126,6 +126,12 @@ h1, h2, h3, p { margin: 0; }
 .story__intro { max-width: 720px; }
 
 /* ---------- 04 SYSTEM ---------- */
+.system__theme { max-width: 48em; margin-inline: auto; text-align: center; font-family: var(--f-ja-head); font-size: clamp(1.2rem, 1rem + .8vw, 1.7rem); line-height: 1.9; letter-spacing: .05em; color: var(--c-gold-light); overflow-wrap: anywhere; }
+.system__subcopy { max-width: 46em; margin-inline: auto; text-align: center; line-height: 1.9; color: var(--c-text); }
+.system-card__tagline { font-family: var(--f-ja-head); font-size: 1.07rem; line-height: 1.8; color: var(--c-gold-light); overflow-wrap: anywhere; }
+.system-card__description { display: flex; flex-direction: column; gap: var(--s-1); line-height: 1.85; color: var(--c-text); }
+.system-card__description p { margin: 0; }
+
 .system-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-3); }
 .system-card { display: flex; flex-direction: column; gap: var(--s-2); padding: var(--s-4); background: var(--c-card); border: 1px solid var(--c-line); border-radius: var(--radius); }
 .system-card__en { font-family: var(--f-en); letter-spacing: .25em; color: var(--c-accent); font-size: .85rem; }
