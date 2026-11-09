@@ -321,3 +321,8 @@ h1, h2, h3, p { margin: 0; }
 .morwen-views__arrow--next { right: 0; }
 .morwen-views__arrow:focus-visible { outline: 3px solid #b9a36a; outline-offset: 3px; }
 @media (hover: none) and (pointer: coarse) { .morwen-views__arrow { display: none; } }
+
+/* Unified Morwen front + three-view gallery */
+.morwen-views { margin-top: 1rem; }
+.morwen-views__stage { width: 100%; aspect-ratio: 2 / 3; overflow: hidden; }
+.morwen-views__image { width: 100%; height: 100%; object-fit: contain; }
