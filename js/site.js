@@ -117,3 +117,7 @@
   const PLACEHOLDER = img.getAttribute('src');
   box.addEventListener('close', () => { img.src = PLACEHOLDER; if (opener) opener.focus(); });
 })();
+
+
+/* MORWEN-3V: accessible direction switcher */
+document.addEventListener("click",function(event){const button=event.target.closest("[data-morwen-view]");if(!button)return;const section=button.closest(".morwen-views");if(!section)return;const img=section.querySelector(".morwen-views__image");img.src=button.dataset.morwenView;img.alt="モルウェン公式設定画・"+button.dataset.morwenLabel;section.querySelectorAll("[data-morwen-view]").forEach(function(item){item.setAttribute("aria-pressed",String(item===button));});});
