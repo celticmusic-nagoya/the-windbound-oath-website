@@ -121,7 +121,7 @@
 
 /* MORWEN-3V: touch swipe on mobile, arrows on desktop, keyboard access */
 (() => {
-  const slides = [{"src":"assets/companions/morwen/turnaround/file_00000000a6308211aaeeb9e2482c2e83.png","label":"右側面"},{"src":"assets/companions/morwen/turnaround/file_0000000035a0820989d20c639724cc25.png","label":"左側面"},{"src":"assets/companions/morwen/turnaround/file_00000000055481f8bac7574e5cab00dc.png","label":"背面"}];
+  const slides = [{"src":"assets/companions/morwen.webp","label":"正面"},{"src":"assets/companions/morwen/turnaround/file_00000000a6308211aaeeb9e2482c2e83.png","label":"右側面"},{"src":"assets/companions/morwen/turnaround/file_0000000035a0820989d20c639724cc25.png","label":"左側面"},{"src":"assets/companions/morwen/turnaround/file_00000000055481f8bac7574e5cab00dc.png","label":"背面"}];
   const threshold = 48;
   document.querySelectorAll('.morwen-views').forEach((section) => {
     const stage = section.querySelector('.morwen-views__stage');
