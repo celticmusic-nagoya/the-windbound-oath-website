@@ -119,5 +119,51 @@
 })();
 
 
-/* MORWEN-3V: accessible direction switcher */
-document.addEventListener("click",function(event){const button=event.target.closest("[data-morwen-view]");if(!button)return;const section=button.closest(".morwen-views");if(!section)return;const img=section.querySelector(".morwen-views__image");img.src=button.dataset.morwenView;img.alt="モルウェン公式設定画・"+button.dataset.morwenLabel;section.querySelectorAll("[data-morwen-view]").forEach(function(item){item.setAttribute("aria-pressed",String(item===button));});});
+/* MORWEN-3V: accessible direction switcher + mobile swipe */
+(() => {
+  const SWIPE_THRESHOLD = 48;
+  document.querySelectorAll('.morwen-views').forEach((section) => {
+    const buttons = Array.from(section.querySelectorAll('[data-morwen-view]'));
+    const image = section.querySelector('.morwen-views__image');
+    if (!image || !buttons.length) return;
+
+    let active = Math.max(0, buttons.findIndex((button) => button.getAttribute('aria-pressed') === 'true'));
+    let touchStart = null;
+
+    const show = (index) => {
+      active = (index + buttons.length) % buttons.length;
+      const button = buttons[active];
+      image.src = button.dataset.morwenView;
+      image.alt = 'モルウェン公式設定画・' + button.dataset.morwenLabel;
+      buttons.forEach((item, i) => item.setAttribute('aria-pressed', String(i === active)));
+    };
+
+    buttons.forEach((button, index) => {
+      button.addEventListener('click', () => show(index));
+      button.addEventListener('keydown', (event) => {
+        if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+        event.preventDefault();
+        const next = (active + (event.key === 'ArrowLeft' ? -1 : 1) + buttons.length) % buttons.length;
+        show(next);
+        buttons[next].focus();
+      });
+    });
+
+    image.addEventListener('dragstart', (event) => event.preventDefault());
+    image.addEventListener('touchstart', (event) => {
+      if (event.touches.length !== 1) { touchStart = null; return; }
+      const touch = event.touches[0];
+      touchStart = { x: touch.clientX, y: touch.clientY };
+    }, { passive: true });
+    image.addEventListener('touchend', (event) => {
+      if (!touchStart || event.changedTouches.length !== 1) { touchStart = null; return; }
+      const touch = event.changedTouches[0];
+      const dx = touch.clientX - touchStart.x;
+      const dy = touch.clientY - touchStart.y;
+      touchStart = null;
+      if (Math.abs(dx) < SWIPE_THRESHOLD || Math.abs(dx) < Math.abs(dy) * 1.3) return;
+      show(active + (dx < 0 ? 1 : -1));
+    }, { passive: true });
+    image.addEventListener('touchcancel', () => { touchStart = null; });
+  });
+})();
