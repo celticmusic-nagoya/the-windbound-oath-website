@@ -307,3 +307,7 @@ h1, h2, h3, p { margin: 0; }
 .world-grid--secondary { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 @media (max-width: 900px) { .world-grid--secondary { grid-template-columns: minmax(0,1fr); } }
 @media (max-width: 600px) { .world-feature__visual { min-height: 370px; } .world-feature__copy { width: 100%; background: linear-gradient(0deg, rgba(8,21,17,.95), rgba(8,21,17,.62)); justify-content: flex-end; } }
+
+
+/* MORWEN-3V: approved three-view character reference */
+.morwen-views{margin:1.5rem auto;max-width:400px}.morwen-views__title{font-size:1rem;margin:0 0 .7rem}.morwen-views__controls{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.75rem}.morwen-views__button{border:1px solid currentColor;border-radius:.35rem;background:transparent;color:inherit;padding:.45rem .7rem;cursor:pointer}.morwen-views__button[aria-pressed="true"]{background:#b9a36a;color:#161a14;border-color:#b9a36a}.morwen-views__button:focus-visible{outline:3px solid #b9a36a;outline-offset:3px}.morwen-views__image{display:block;width:100%;height:auto;object-fit:contain}
