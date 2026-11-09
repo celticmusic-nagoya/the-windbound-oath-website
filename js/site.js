@@ -119,51 +119,44 @@
 })();
 
 
-/* MORWEN-3V: accessible direction switcher + mobile swipe */
+/* MORWEN-3V: touch swipe on mobile, arrows on desktop, keyboard access */
 (() => {
-  const SWIPE_THRESHOLD = 48;
+  const slides = [{"src":"assets/companions/morwen/turnaround/file_00000000a6308211aaeeb9e2482c2e83.png","label":"右側面"},{"src":"assets/companions/morwen/turnaround/file_0000000035a0820989d20c639724cc25.png","label":"左側面"},{"src":"assets/companions/morwen/turnaround/file_00000000055481f8bac7574e5cab00dc.png","label":"背面"}];
+  const threshold = 48;
   document.querySelectorAll('.morwen-views').forEach((section) => {
-    const buttons = Array.from(section.querySelectorAll('[data-morwen-view]'));
+    const stage = section.querySelector('.morwen-views__stage');
     const image = section.querySelector('.morwen-views__image');
-    if (!image || !buttons.length) return;
-
-    let active = Math.max(0, buttons.findIndex((button) => button.getAttribute('aria-pressed') === 'true'));
+    const status = section.querySelector('.morwen-views__status');
+    const prev = section.querySelector('.morwen-views__arrow--prev');
+    const next = section.querySelector('.morwen-views__arrow--next');
+    if (!stage || !image || !status || !prev || !next) return;
+    let current = 0;
     let touchStart = null;
-
     const show = (index) => {
-      active = (index + buttons.length) % buttons.length;
-      const button = buttons[active];
-      image.src = button.dataset.morwenView;
-      image.alt = 'モルウェン公式設定画・' + button.dataset.morwenLabel;
-      buttons.forEach((item, i) => item.setAttribute('aria-pressed', String(i === active)));
+      current = (index + slides.length) % slides.length;
+      image.src = slides[current].src;
+      image.alt = 'モルウェン公式設定画・' + slides[current].label;
+      status.textContent = slides[current].label + '（' + (current + 1) + ' / ' + slides.length + '）';
     };
-
-    buttons.forEach((button, index) => {
-      button.addEventListener('click', () => show(index));
-      button.addEventListener('keydown', (event) => {
-        if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
-        event.preventDefault();
-        const next = (active + (event.key === 'ArrowLeft' ? -1 : 1) + buttons.length) % buttons.length;
-        show(next);
-        buttons[next].focus();
-      });
+    prev.addEventListener('click', () => show(current - 1));
+    next.addEventListener('click', () => show(current + 1));
+    stage.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      show(current + (event.key === 'ArrowLeft' ? -1 : 1));
     });
-
-    image.addEventListener('dragstart', (event) => event.preventDefault());
-    image.addEventListener('touchstart', (event) => {
+    stage.addEventListener('touchstart', (event) => {
       if (event.touches.length !== 1) { touchStart = null; return; }
-      const touch = event.touches[0];
-      touchStart = { x: touch.clientX, y: touch.clientY };
+      touchStart = { x: event.touches[0].clientX, y: event.touches[0].clientY };
     }, { passive: true });
-    image.addEventListener('touchend', (event) => {
+    stage.addEventListener('touchend', (event) => {
       if (!touchStart || event.changedTouches.length !== 1) { touchStart = null; return; }
-      const touch = event.changedTouches[0];
-      const dx = touch.clientX - touchStart.x;
-      const dy = touch.clientY - touchStart.y;
+      const dx = event.changedTouches[0].clientX - touchStart.x;
+      const dy = event.changedTouches[0].clientY - touchStart.y;
       touchStart = null;
-      if (Math.abs(dx) < SWIPE_THRESHOLD || Math.abs(dx) < Math.abs(dy) * 1.3) return;
-      show(active + (dx < 0 ? 1 : -1));
+      if (Math.abs(dx) < threshold || Math.abs(dx) < Math.abs(dy) * 1.3) return;
+      show(current + (dx < 0 ? 1 : -1));
     }, { passive: true });
-    image.addEventListener('touchcancel', () => { touchStart = null; });
+    stage.addEventListener('touchcancel', () => { touchStart = null; });
   });
 })();
