@@ -309,5 +309,15 @@ h1, h2, h3, p { margin: 0; }
 @media (max-width: 600px) { .world-feature__visual { min-height: 370px; } .world-feature__copy { width: 100%; background: linear-gradient(0deg, rgba(8,21,17,.95), rgba(8,21,17,.62)); justify-content: flex-end; } }
 
 
-/* MORWEN-3V: approved three-view character reference */
-.morwen-views{margin:1.5rem auto;max-width:400px}.morwen-views__title{font-size:1rem;margin:0 0 .7rem}.morwen-views__controls{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.75rem}.morwen-views__button{border:1px solid currentColor;border-radius:.35rem;background:transparent;color:inherit;padding:.45rem .7rem;cursor:pointer}.morwen-views__button[aria-pressed="true"]{background:#b9a36a;color:#161a14;border-color:#b9a36a}.morwen-views__button:focus-visible{outline:3px solid #b9a36a;outline-offset:3px}.morwen-views__image{display:block;width:100%;height:auto;object-fit:contain}
+/* MORWEN-3V: responsive three-view carousel */
+.morwen-views { margin: 1.5rem auto; max-width: 400px; }
+.morwen-views__title { font-size: 1rem; margin: 0 0 .7rem; }
+.morwen-views__stage { position: relative; touch-action: pan-y; outline-offset: 4px; }
+.morwen-views__stage:focus-visible { outline: 3px solid #b9a36a; }
+.morwen-views__image { display: block; width: 100%; height: auto; object-fit: contain; user-select: none; -webkit-user-drag: none; }
+.morwen-views__status { text-align: center; margin: .5rem 0 0; font-size: .9rem; }
+.morwen-views__arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 1; border: 1px solid #b9a36a; background: rgba(12,25,20,.85); color: #f3e9d4; width: 44px; height: 56px; border-radius: 5px; font: inherit; font-size: 2rem; cursor: pointer; display: grid; place-items: center; }
+.morwen-views__arrow--prev { left: 0; }
+.morwen-views__arrow--next { right: 0; }
+.morwen-views__arrow:focus-visible { outline: 3px solid #b9a36a; outline-offset: 3px; }
+@media (hover: none) and (pointer: coarse) { .morwen-views__arrow { display: none; } }

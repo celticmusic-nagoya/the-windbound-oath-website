@@ -119,5 +119,44 @@
 })();
 
 
-/* MORWEN-3V: accessible direction switcher */
-document.addEventListener("click",function(event){const button=event.target.closest("[data-morwen-view]");if(!button)return;const section=button.closest(".morwen-views");if(!section)return;const img=section.querySelector(".morwen-views__image");img.src=button.dataset.morwenView;img.alt="モルウェン公式設定画・"+button.dataset.morwenLabel;section.querySelectorAll("[data-morwen-view]").forEach(function(item){item.setAttribute("aria-pressed",String(item===button));});});
+/* MORWEN-3V: touch swipe on mobile, arrows on desktop, keyboard access */
+(() => {
+  const slides = [{"src":"assets/companions/morwen/turnaround/file_00000000a6308211aaeeb9e2482c2e83.png","label":"右側面"},{"src":"assets/companions/morwen/turnaround/file_0000000035a0820989d20c639724cc25.png","label":"左側面"},{"src":"assets/companions/morwen/turnaround/file_00000000055481f8bac7574e5cab00dc.png","label":"背面"}];
+  const threshold = 48;
+  document.querySelectorAll('.morwen-views').forEach((section) => {
+    const stage = section.querySelector('.morwen-views__stage');
+    const image = section.querySelector('.morwen-views__image');
+    const status = section.querySelector('.morwen-views__status');
+    const prev = section.querySelector('.morwen-views__arrow--prev');
+    const next = section.querySelector('.morwen-views__arrow--next');
+    if (!stage || !image || !status || !prev || !next) return;
+    let current = 0;
+    let touchStart = null;
+    const show = (index) => {
+      current = (index + slides.length) % slides.length;
+      image.src = slides[current].src;
+      image.alt = 'モルウェン公式設定画・' + slides[current].label;
+      status.textContent = slides[current].label + '（' + (current + 1) + ' / ' + slides.length + '）';
+    };
+    prev.addEventListener('click', () => show(current - 1));
+    next.addEventListener('click', () => show(current + 1));
+    stage.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      show(current + (event.key === 'ArrowLeft' ? -1 : 1));
+    });
+    stage.addEventListener('touchstart', (event) => {
+      if (event.touches.length !== 1) { touchStart = null; return; }
+      touchStart = { x: event.touches[0].clientX, y: event.touches[0].clientY };
+    }, { passive: true });
+    stage.addEventListener('touchend', (event) => {
+      if (!touchStart || event.changedTouches.length !== 1) { touchStart = null; return; }
+      const dx = event.changedTouches[0].clientX - touchStart.x;
+      const dy = event.changedTouches[0].clientY - touchStart.y;
+      touchStart = null;
+      if (Math.abs(dx) < threshold || Math.abs(dx) < Math.abs(dy) * 1.3) return;
+      show(current + (dx < 0 ? 1 : -1));
+    }, { passive: true });
+    stage.addEventListener('touchcancel', () => { touchStart = null; });
+  });
+})();
