@@ -121,7 +121,13 @@
 
 /* MORWEN-3V: touch swipe on mobile, arrows on desktop, keyboard access */
 (() => {
-  const slides = [{"src":"assets/companions/morwen.webp","label":"正面"},{"src":"assets/companions/morwen/turnaround/file_00000000a6308211aaeeb9e2482c2e83.png","label":"右側面"},{"src":"assets/companions/morwen/turnaround/file_0000000035a0820989d20c639724cc25.png","label":"左側面"},{"src":"assets/companions/morwen/turnaround/file_00000000055481f8bac7574e5cab00dc.png","label":"背面"}];
+  /* MORWEN-HD-CANONICAL-V2 (2026-11-10): left = canonical v2 (old 3V left d858c428 superseded, file kept).
+     ?morwen=hd-v2 shows the HD pixel 4-direction display derivatives as a preview only. */
+  const officialSlides = [{"src":"assets/companions/morwen.webp","label":"正面"},{"src":"assets/companions/morwen/turnaround/file_00000000a6308211aaeeb9e2482c2e83.png","label":"右側面"},{"src":"assets/companions/morwen/hd-v2/real/left.png","label":"左側面"},{"src":"assets/companions/morwen/turnaround/file_00000000055481f8bac7574e5cab00dc.png","label":"背面"}];
+  const hdPreviewSlides = ["front","right","left","back"].map((d, i) => ({"src":"assets/companions/morwen/hd-v2/pixel/" + d + "_1200x1600.png","label":"HDドット絵・" + ["正面","右側面","左側面","背面"][i] + "（プレビュー）","width":1200,"height":1600}));
+  let hdPreview = false;
+  try { hdPreview = new URLSearchParams(location.search).get('morwen') === 'hd-v2'; } catch (e) { hdPreview = false; }
+  const slides = hdPreview ? hdPreviewSlides : officialSlides;
   const threshold = 48;
   document.querySelectorAll('.morwen-views').forEach((section) => {
     const stage = section.querySelector('.morwen-views__stage');
@@ -132,12 +138,15 @@
     if (!stage || !image || !status || !prev || !next) return;
     let current = 0;
     let touchStart = null;
+    if (hdPreview) { section.dataset.preview = 'hd-v2'; image.loading = 'eager'; }
     const show = (index) => {
       current = (index + slides.length) % slides.length;
+      if (slides[current].width) { image.width = slides[current].width; image.height = slides[current].height; }
       image.src = slides[current].src;
       image.alt = 'モルウェン公式設定画・' + slides[current].label;
       status.textContent = slides[current].label + '（' + (current + 1) + ' / ' + slides.length + '）';
     };
+    if (hdPreview) show(0);
     prev.addEventListener('click', () => show(current - 1));
     next.addEventListener('click', () => show(current + 1));
     stage.addEventListener('keydown', (event) => {

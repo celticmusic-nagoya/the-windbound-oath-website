@@ -1,0 +1,87 @@
+{
+ "task": "MORWEN-HD-CANONICAL-V2-REGISTER",
+ "date": "2026-11-10",
+ "source": "MORWEN_CANONICAL_V2_LEFT_REPLACED_NORMALIZED_20261110.zip (bytes preserved)",
+ "game_repository_registry": "celticmusic-nagoya/the-windbound-oath data/morwen-hd-canonical-v2.json (Draft PR #221)",
+ "added": [
+  {
+   "path": "assets/companions/morwen/hd-v2/real/left.png",
+   "delivery": "originals/real/left.png",
+   "role": "CANONICAL original (real, left) - official carousel left",
+   "published_reference": "js/site.js officialSlides[2]",
+   "sha256": "a48ab1bc86bb7a1597b701575657b95ddbbb153c5f7b0528d3e885cca7645279"
+  },
+  {
+   "path": "assets/companions/morwen/hd-v2/pixel/front_1200x1600.png",
+   "delivery": "display/pixel/front_1200x1600.png",
+   "role": "DISPLAY_DERIVATIVE (not master) - preview only ?morwen=hd-v2",
+   "published_reference": "js/site.js hdPreviewSlides",
+   "sha256": "a1cec16d21c6427c5b876324a7a14a2b21d83bce9cbc13ae80c0589db245ac9c"
+  },
+  {
+   "path": "assets/companions/morwen/hd-v2/pixel/left_1200x1600.png",
+   "delivery": "display/pixel/left_1200x1600.png",
+   "role": "DISPLAY_DERIVATIVE (not master) - preview only ?morwen=hd-v2",
+   "published_reference": "js/site.js hdPreviewSlides",
+   "sha256": "e0fe405042d2aac57a1cebf233af5b8f0c238a12c9562394e676615235a8d7e7"
+  },
+  {
+   "path": "assets/companions/morwen/hd-v2/pixel/right_1200x1600.png",
+   "delivery": "display/pixel/right_1200x1600.png",
+   "role": "DISPLAY_DERIVATIVE (not master) - preview only ?morwen=hd-v2",
+   "published_reference": "js/site.js hdPreviewSlides",
+   "sha256": "531c4ee0618f2d7648cc76e4f83c3390de0e470badccb13e159ca909e5d68144"
+  },
+  {
+   "path": "assets/companions/morwen/hd-v2/pixel/back_1200x1600.png",
+   "delivery": "display/pixel/back_1200x1600.png",
+   "role": "DISPLAY_DERIVATIVE (not master) - preview only ?morwen=hd-v2",
+   "published_reference": "js/site.js hdPreviewSlides",
+   "sha256": "047fb26bd6ae5598178a8a9897454aac1e5a155d5613ccf9e35628ece3db7f64"
+  }
+ ],
+ "already_registered": [
+  {
+   "delivery": "originals/real/portrait.webp",
+   "sha256": "141a6955af90f8678e408efd3649e3e114c3c4c44c682e00c6679e386474581b",
+   "existing": "assets/companions/morwen.webp"
+  }
+ ],
+ "not_added_here": [
+  {
+   "delivery": "originals/pixel/front.png",
+   "reason": "not referenced by the website; registered in the game repository"
+  },
+  {
+   "delivery": "originals/pixel/left.png",
+   "reason": "not referenced by the website; registered in the game repository"
+  },
+  {
+   "delivery": "originals/pixel/right.png",
+   "reason": "not referenced by the website; registered in the game repository"
+  },
+  {
+   "delivery": "originals/pixel/back.png",
+   "reason": "not referenced by the website; registered in the game repository"
+  },
+  {
+   "delivery": "originals/real/front.png",
+   "reason": "not referenced by the website; registered in the game repository"
+  },
+  {
+   "delivery": "originals/real/back.png",
+   "reason": "not referenced by the website; registered in the game repository"
+  },
+  {
+   "delivery": "originals/real/right.png",
+   "reason": "not referenced by the website; registered in the game repository"
+  }
+ ],
+ "superseded_kept": [
+  {
+   "path": "assets/companions/morwen/turnaround/file_0000000035a0820989d20c639724cc25.png",
+   "sha256": "d858c428c64007596302057453f414dd43c580bc1546b9578c3d1dfb0af17591",
+   "status": "SUPERSEDED / no longer referenced; file kept"
+  }
+ ]
+}
