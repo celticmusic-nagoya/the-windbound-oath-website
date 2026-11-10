@@ -1,0 +1,238 @@
+[
+ {
+  "mode": "official",
+  "viewport": [
+   1440,
+   900
+  ],
+  "slides": [
+   {
+    "src": "assets/companions/morwen.webp",
+    "nw": 720,
+    "nh": 1080,
+    "w": 400,
+    "h": 600,
+    "status": "正面（1 / 4）",
+    "preview": ""
+   },
+   {
+    "src": "assets/companions/morwen/turnaround/file_00000000a6308211aaeeb9e2482c2e83.png",
+    "nw": 1024,
+    "nh": 1536,
+    "w": 400,
+    "h": 600,
+    "status": "右側面（2 / 4）",
+    "preview": ""
+   },
+   {
+    "src": "assets/companions/morwen/hd-v2/real/left.png",
+    "nw": 1024,
+    "nh": 1535,
+    "w": 400,
+    "h": 600,
+    "status": "左側面（3 / 4）",
+    "preview": ""
+   },
+   {
+    "src": "assets/companions/morwen/turnaround/file_00000000055481f8bac7574e5cab00dc.png",
+    "nw": 1024,
+    "nh": 1536,
+    "w": 400,
+    "h": 600,
+    "status": "背面（4 / 4）",
+    "preview": ""
+   },
+   {
+    "src": "assets/companions/morwen.webp",
+    "nw": 720,
+    "nh": 1080,
+    "w": 400,
+    "h": 600,
+    "status": "正面（1 / 4）",
+    "preview": ""
+   }
+  ],
+  "errors": [],
+  "old_left_referenced": false,
+  "left_is_new": true,
+  "cycled_back_to_first": true,
+  "all_loaded": true
+ },
+ {
+  "mode": "official",
+  "viewport": [
+   390,
+   844
+  ],
+  "slides": [
+   {
+    "src": "assets/companions/morwen.webp",
+    "nw": 720,
+    "nh": 1080,
+    "w": 300,
+    "h": 450,
+    "status": "正面（1 / 4）",
+    "preview": ""
+   },
+   {
+    "src": "assets/companions/morwen/turnaround/file_00000000a6308211aaeeb9e2482c2e83.png",
+    "nw": 1024,
+    "nh": 1536,
+    "w": 300,
+    "h": 450,
+    "status": "右側面（2 / 4）",
+    "preview": ""
+   },
+   {
+    "src": "assets/companions/morwen/hd-v2/real/left.png",
+    "nw": 1024,
+    "nh": 1535,
+    "w": 300,
+    "h": 450,
+    "status": "左側面（3 / 4）",
+    "preview": ""
+   },
+   {
+    "src": "assets/companions/morwen/turnaround/file_00000000055481f8bac7574e5cab00dc.png",
+    "nw": 1024,
+    "nh": 1536,
+    "w": 300,
+    "h": 450,
+    "status": "背面（4 / 4）",
+    "preview": ""
+   },
+   {
+    "src": "assets/companions/morwen.webp",
+    "nw": 720,
+    "nh": 1080,
+    "w": 300,
+    "h": 450,
+    "status": "正面（1 / 4）",
+    "preview": ""
+   }
+  ],
+  "errors": [],
+  "old_left_referenced": false,
+  "left_is_new": true,
+  "cycled_back_to_first": true,
+  "all_loaded": true
+ },
+ {
+  "mode": "preview",
+  "viewport": [
+   1440,
+   900
+  ],
+  "slides": [
+   {
+    "src": "assets/companions/morwen/hd-v2/pixel/front_1200x1600.png",
+    "nw": 1200,
+    "nh": 1600,
+    "w": 400,
+    "h": 600,
+    "status": "HDドット絵・正面（プレビュー）（1 / 4）",
+    "preview": "hd-v2"
+   },
+   {
+    "src": "assets/companions/morwen/hd-v2/pixel/right_1200x1600.png",
+    "nw": 1200,
+    "nh": 1600,
+    "w": 400,
+    "h": 600,
+    "status": "HDドット絵・右側面（プレビュー）（2 / 4）",
+    "preview": "hd-v2"
+   },
+   {
+    "src": "assets/companions/morwen/hd-v2/pixel/left_1200x1600.png",
+    "nw": 1200,
+    "nh": 1600,
+    "w": 400,
+    "h": 600,
+    "status": "HDドット絵・左側面（プレビュー）（3 / 4）",
+    "preview": "hd-v2"
+   },
+   {
+    "src": "assets/companions/morwen/hd-v2/pixel/back_1200x1600.png",
+    "nw": 1200,
+    "nh": 1600,
+    "w": 400,
+    "h": 600,
+    "status": "HDドット絵・背面（プレビュー）（4 / 4）",
+    "preview": "hd-v2"
+   },
+   {
+    "src": "assets/companions/morwen/hd-v2/pixel/front_1200x1600.png",
+    "nw": 1200,
+    "nh": 1600,
+    "w": 400,
+    "h": 600,
+    "status": "HDドット絵・正面（プレビュー）（1 / 4）",
+    "preview": "hd-v2"
+   }
+  ],
+  "errors": [],
+  "old_left_referenced": false,
+  "left_is_new": true,
+  "cycled_back_to_first": true,
+  "all_loaded": true
+ },
+ {
+  "mode": "preview",
+  "viewport": [
+   390,
+   844
+  ],
+  "slides": [
+   {
+    "src": "assets/companions/morwen/hd-v2/pixel/front_1200x1600.png",
+    "nw": 1200,
+    "nh": 1600,
+    "w": 300,
+    "h": 450,
+    "status": "HDドット絵・正面（プレビュー）（1 / 4）",
+    "preview": "hd-v2"
+   },
+   {
+    "src": "assets/companions/morwen/hd-v2/pixel/right_1200x1600.png",
+    "nw": 1200,
+    "nh": 1600,
+    "w": 300,
+    "h": 450,
+    "status": "HDドット絵・右側面（プレビュー）（2 / 4）",
+    "preview": "hd-v2"
+   },
+   {
+    "src": "assets/companions/morwen/hd-v2/pixel/left_1200x1600.png",
+    "nw": 1200,
+    "nh": 1600,
+    "w": 300,
+    "h": 450,
+    "status": "HDドット絵・左側面（プレビュー）（3 / 4）",
+    "preview": "hd-v2"
+   },
+   {
+    "src": "assets/companions/morwen/hd-v2/pixel/back_1200x1600.png",
+    "nw": 1200,
+    "nh": 1600,
+    "w": 300,
+    "h": 450,
+    "status": "HDドット絵・背面（プレビュー）（4 / 4）",
+    "preview": "hd-v2"
+   },
+   {
+    "src": "assets/companions/morwen/hd-v2/pixel/front_1200x1600.png",
+    "nw": 1200,
+    "nh": 1600,
+    "w": 300,
+    "h": 450,
+    "status": "HDドット絵・正面（プレビュー）（1 / 4）",
+    "preview": "hd-v2"
+   }
+  ],
+  "errors": [],
+  "old_left_referenced": false,
+  "left_is_new": true,
+  "cycled_back_to_first": true,
+  "all_loaded": true
+ }
+]
