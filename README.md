@@ -1,3 +1,9 @@
+## CURRENT CANON LOCK (2026-11-12)
+- モルウェンは**18歳**。公式サイトの人物紹介も18歳。エイダン等、他人物の年齢は変更しない。
+- Claude等の作業エージェントは編集前に本サイトmainと、非公開 `the-windbound-oath-handoff` の **main最新版** `reference/lore/THE_WINDBOUND_OATH_OFFICIAL_BIBLE_v5.0.md`、`CANON_ADDENDUM.md`、`CANON_STATUS.md` を確認する。
+- 過去コミット・旧ブランチ・バックアップ・過去のPRや会話は正典の根拠にしない。古い記述を復元しない。読めない場合は設定変更をBLOCKEDにする。
+- 画像の正本・SHAロック・未採用候補の区分を維持。公開はサイトQAを経る。
+
 # THE WINDBOUND OATH — Official Website
 
 Independent official website repository (static HTML / CSS / vanilla JS, no build step).
