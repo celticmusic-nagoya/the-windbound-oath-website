@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101A17">
+<meta name="robots" content="index,follow">
+<title>プライバシーポリシー | THE WINDBOUND OATH</title>
+<meta name="description" content="THE WINDBOUND OATHのPinterest資料調査アプリに関するプライバシーポリシー。">
+<link rel="canonical" href="https://celticmusic-nagoya.github.io/the-windbound-oath-website/privacy.html">
+<style>
+:root{color-scheme:dark;font-family:"Noto Sans JP",system-ui,-apple-system,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:#101a17;color:#eee9dc;line-height:1.9}
+header,main,footer{max-width:860px;margin:auto;padding:20px 24px}
+header{border-bottom:1px solid #465148}a{color:#d5c28a}a:focus-visible{outline:3px solid #e3cb84;outline-offset:4px}
+h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.35}h2{font-size:1.17rem;color:#e2d1a2;margin-top:2.2rem}
+p,li{overflow-wrap:anywhere}main{padding-top:26px;padding-bottom:48px}footer{border-top:1px solid #465148;color:#c9c9be;font-size:.9rem}
+small{color:#bfbfb3}
+</style>
+</head>
+<body>
+<header><a href="./">THE WINDBOUND OATH 公式サイトへ戻る</a></header>
+<main id="main">
+<h1>プライバシーポリシー</h1>
+<p><small>最終更新日：2026年11月13日</small></p>
+<p>THE WINDBOUND OATH（以下「本プロジェクト」）は、ゲーム制作に用いる建築・自然環境の参考資料を調査するため、Pinterest APIと連携する内部向けツール「Windbound Oath Asset Research」（以下「本ツール」）を開発しています。本ポリシーは本ツールによる情報の取扱いについて説明するものです。本ツールのAPI連携は準備中であり、運用開始時には実際の取扱いに合わせて本ポリシーを見直します。</p>
+<h2>1. 利用目的</h2>
+<p>許可されたPinterestアカウントのボードとピンを参照し、建築・屋根材・植生・質感等の制作参考資料を分類・選定して、Blenderによるオリジナルの3Dアセット制作に役立てます。Pinterest画像をそのままゲーム素材として再配布することは目的としません。</p>
+<h2>2. 取得・処理する情報</h2>
+<p>アカウント所有者が明示的に許可した範囲で、ボードID、ピンID、タイトル、説明、参照先URL、ボード内の配置情報等をAPI経由で参照する場合があります。認証にはOAuthアクセストークンを使用します。Pinterestのログインパスワードを本ツールが収集することはありません。</p>
+<h2>3. 保存と利用範囲</h2>
+<p>制作上必要な参考資料の識別子、URL、選定理由、検証結果等をGitHub上の開発記録やGitHub Actionsの実行成果物に保存する場合があります。非公開ボードに由来する情報を公開リポジトリへ掲載しないよう、運用時に保存対象を制限します。認証トークンはGitHub ActionsのSecrets等のアクセス制限された領域で管理し、ソースコードや公開ページに記載しません。</p>
+<h2>4. 第三者サービス</h2>
+<p>本ツールではPinterest API、GitHubおよびGitHub Actionsを利用します。これらのサービスにおける情報の取扱いには各事業者のポリシーが適用されます。</p>
+<ul>
+<li><a href="https://policy.pinterest.com/ja/privacy-policy">Pinterestのプライバシーポリシー</a></li>
+<li><a href="https://docs.github.com/ja/site-policy/privacy-policies/github-general-privacy-statement">GitHubのプライバシーステートメント</a></li>
+</ul>
+<h2>5. 第三者への提供・販売</h2>
+<p>本ツールはPinterest APIから取得した情報を広告配信、データ販売、第三者への無断提供の目的で利用しません。制作上の参考情報の取扱いについてもPinterestの利用規約と各コンテンツの権利を尊重します。</p>
+<h2>6. 保持期間・削除</h2>
+<p>参考資料の記録は制作上必要な期間に限り保持し、不要となった情報は権限と保存先の仕様に応じて削除または更新します。GitHub Actionsの成果物等にはサービス側の保持期間が適用される場合があります。認証はPinterest側で取り消すことができます。</p>
+<h2>7. セキュリティ</h2>
+<p>本ツールでは必要最小限の読み取り権限を利用し、認証情報の公開や不必要な情報収集を避けます。アクセス権限の管理、認証情報の更新、実行ログの確認などを行います。</p>
+<h2>8. お問い合わせ</h2>
+<p>本ポリシーおよび本ツールに関するお問い合わせは、<a href="https://github.com/celticmusic-nagoya">THE WINDBOUND OATHのGitHub運営アカウント</a>からご連絡ください。GitHub上で連絡する場合、公開コメントには個人情報や認証情報を記載しないでください。</p>
+<h2>9. 改定</h2>
+<p>APIの利用範囲、保存方法、法令またはサービス規約の変更等に応じて本ポリシーを改定する場合があります。変更後の内容は本ページに掲載します。</p>
+</main>
+<footer>© THE WINDBOUND OATH — <a href="./">Official Website</a></footer>
+</body>
+</html>
